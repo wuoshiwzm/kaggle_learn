@@ -7,8 +7,7 @@ from sklearn.svm import LinearSVC
 from sklearn.model_selection import learning_curve
 
 
-def plot_learning_cure(estimator, title, X, y, ylim=None, cv=None
-                       , train_sizes=np.linspace(.1, 1.0, 5)):
+def plot_learning_curve(estimator, title, X, y, ylim=None, cv=5 , train_sizes=np.linspace(.1, 1.0, 5)):
     """
         画出data在某模型上的learning curve.
         参数解释
@@ -23,7 +22,7 @@ def plot_learning_cure(estimator, title, X, y, ylim=None, cv=None
     plt.figure()
     #
     # train_sizes_abs : array, shape (n_unique_ticks,), dtype int Numbers of training examples that has been used to generate the learning curve.
-    train_sizes, train_scores, test_scores = learning_curve(estimator, X, y, cv=5, n_jobs=1, train_sizes=train_sizes)
+    train_sizes, train_scores, test_scores = learning_curve(estimator, X, y, cv=cv, n_jobs=1, train_sizes=train_sizes)
     print(train_sizes, train_scores, test_scores)
     train_scores_mean = np.mean(train_scores, axis=1)
     train_scores_std = np.std(train_scores, axis=1)
@@ -51,7 +50,6 @@ def plot_learning_cure(estimator, title, X, y, ylim=None, cv=None
     plt.title(title)
     plt.show()
 
-plot_learning_cure(LinearSVC,'learning rate plot(C=10.0)',X,y,ylim)
 
 
 
