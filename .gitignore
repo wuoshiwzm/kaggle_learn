@@ -7,3 +7,10 @@ data
 .ipynb_checkpoints
 */.ipynb_checkpoints
 .ipynb_checkpoints/*
+*.ipynb_checkpoints
+*.gz
+*.csv
+.DS_STORE
+
+
+
